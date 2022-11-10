@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Cvcreator from "./components/Cvcreator";
+
 class App extends Component {
   constructor() {
     super();
@@ -9,8 +11,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header title="CV APP" />
-        <Footer title="Made by Haervwe" />
+        <Header key="header" title="CV APP" />
+        <Cvcreator key="cvcreator"></Cvcreator>
+        <Footer key="footer" title="Made by Haervwe" />
       </div>
     );
   }
