@@ -20,7 +20,14 @@ class EducationData extends Component {
   }
 
   onChange = (e) => {
-    this.setState({ institution: { [e.target.name]: e.target.value } });
+    const newState = this.state;
+
+    newState.institution = {
+      ...newState.institution,
+      [e.target.name]: e.target.value,
+    };
+
+    this.setState(newState);
   };
 
   onSubmit = (e) => {
@@ -45,8 +52,8 @@ class EducationData extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <h3>Education:</h3>
-          <label for="level">Grade Achieved:</label>
+          <h2>Education:</h2>
+          <label htmlfor="level">Grade Achieved:</label>
           <input
             list="Grade"
             value={values.level}
@@ -60,28 +67,28 @@ class EducationData extends Component {
             <option value="Master"></option>
             <option value="PhD"></option>
           </datalist>
-          <label for="inst">Institution:</label>
+          <label htmlfor="inst">Institution:</label>
           <input
             type="text"
             value={values.inst}
             onChange={this.onChange}
             name="inst"
           ></input>
-          <label for="start">Started:</label>
+          <label htmlfor="start">Started:</label>
           <input
             type="date"
             value={values.start}
             onChange={this.onChange}
             name="start"
           ></input>
-          <label for="end">Finished:</label>
+          <label htmlfor="end">Finished:</label>
           <input
             type="date"
             value={values.end}
             onChange={this.onChange}
             name="end"
           ></input>
-          <label for="title">Title obtained:</label>
+          <label htmlfor="title">Title obtained:</label>
           <input
             type="text"
             value={values.title}
@@ -95,6 +102,14 @@ class EducationData extends Component {
             return (
               <div>
                 <h3>{education.title}</h3>
+                <h4>Institution:</h4>
+                <p>{education.inst}</p>
+                <h4>Education Level:</h4>
+                <p>{education.level}</p>
+                <h4>Period:</h4>
+                <p>
+                  Started: {education.start} - Ended: {education.end}
+                </p>
               </div>
             );
           })}
