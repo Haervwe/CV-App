@@ -18,6 +18,7 @@ class PersonalData extends Component {
       [e.target.name]: e.target.value,
     };
     this.setState(newState);
+    //aa
   };
   onSubmit = (e) => {
     e.preventDefault();
