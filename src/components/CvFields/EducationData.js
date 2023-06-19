@@ -21,7 +21,6 @@ class EducationData extends Component {
 
   onChange = (e) => {
     const newState = this.state;
-
     newState.institution = {
       ...newState.institution,
       [e.target.name]: e.target.value,
@@ -46,6 +45,23 @@ class EducationData extends Component {
       },
     });
   };
+  deleteEdu = (e) => {
+    let newState = this.state;
+    let institutions = this.state.institutions;
+    console.log(institutions, e);
+    for (let i = 0; i < institutions.length; i++) {
+      if (institutions[i].id === e) {
+        institutions.splice(i, 1);
+      }
+    }
+
+    newState = {
+      ...newState,
+      institutions: institutions,
+    };
+    console.log(institutions);
+    this.setState(newState);
+  };
 
   render() {
     const values = this.state.institution;
@@ -53,7 +69,7 @@ class EducationData extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <h2>Education:</h2>
-          <label htmlfor="level">Grade Achieved:</label>
+          <label htmlFor="level">Grade Achieved:</label>
           <input
             list="Grade"
             value={values.level}
@@ -67,28 +83,28 @@ class EducationData extends Component {
             <option value="Master"></option>
             <option value="PhD"></option>
           </datalist>
-          <label htmlfor="inst">Institution:</label>
+          <label htmlFor="inst">Institution:</label>
           <input
             type="text"
             value={values.inst}
             onChange={this.onChange}
             name="inst"
           ></input>
-          <label htmlfor="start">Started:</label>
+          <label htmlFor="start">Started:</label>
           <input
             type="date"
             value={values.start}
             onChange={this.onChange}
             name="start"
           ></input>
-          <label htmlfor="end">Finished:</label>
+          <label htmlFor="end">Finished:</label>
           <input
             type="date"
             value={values.end}
             onChange={this.onChange}
             name="end"
           ></input>
-          <label htmlfor="title">Title obtained:</label>
+          <label htmlFor="title">Title obtained:</label>
           <input
             type="text"
             value={values.title}
@@ -97,10 +113,10 @@ class EducationData extends Component {
           ></input>
           <button type="submit">Add Education</button>
         </form>
-        <div>
+        <ul>
           {this.state.institutions.map((education) => {
             return (
-              <div>
+              <li key={education.id}>
                 <h3>{education.title}</h3>
                 <h4>Institution:</h4>
                 <p>{education.inst}</p>
@@ -110,10 +126,17 @@ class EducationData extends Component {
                 <p>
                   Started: {education.start} - Ended: {education.end}
                 </p>
-              </div>
+                <button
+                  onClick={() => {
+                    this.deleteEdu(education.id);
+                  }}
+                >
+                  Delete education entry.
+                </button>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     );
   }

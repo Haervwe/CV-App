@@ -18,7 +18,7 @@ class PersonalData extends Component {
       [e.target.name]: e.target.value,
     };
     this.setState(newState);
-    //aa
+    //
   };
   onSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +48,7 @@ class PersonalData extends Component {
         <div>
           <form onSubmit={this.onSubmit}>
             <h2>Personal Data:</h2>
-            <label htmlfor="name">Full Name:</label>
+            <label htmlFor="name">Full Name:</label>
             <input
               type="text"
               list="name"
@@ -56,21 +56,21 @@ class PersonalData extends Component {
               onChange={this.onChange}
               name="name"
             ></input>
-            <label htmlfor="phone">Phone Number:</label>
+            <label htmlFor="phone">Phone Number:</label>
             <input
               type="number"
               value={values.phone}
               onChange={this.onChange}
               name="phone"
             ></input>
-            <label htmlfor="start">E-mail:</label>
+            <label htmlFor="start">E-mail:</label>
             <input
               type="mail"
               value={values.mail}
               onChange={this.onChange}
               name="mail"
             ></input>
-            <label htmlfor="age">Age:</label>
+            <label htmlFor="age">Age:</label>
             <input
               type="number"
               value={values.end}
