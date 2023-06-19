@@ -6,7 +6,6 @@ class EducationData extends Component {
     super();
     this.state = {
       institution: {
-        ready: false,
         level: "",
         inst: "",
         completed: "",
@@ -34,7 +33,6 @@ class EducationData extends Component {
     this.setState({
       institutions: this.state.institutions.concat(this.state.institution),
       institution: {
-        ready: false,
         level: "",
         inst: "",
         completed: "",
