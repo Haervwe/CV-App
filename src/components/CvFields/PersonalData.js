@@ -25,9 +25,7 @@ class PersonalData extends Component {
     let newState = this.state;
     newState = {
       ...newState,
-      ready: () => {
-        return !this.state.ready;
-      },
+      ready: !this.state.ready,
     };
     this.setState(newState);
   };
