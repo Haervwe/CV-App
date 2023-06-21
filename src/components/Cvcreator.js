@@ -2,6 +2,7 @@ import { Component } from "react";
 import PersonalData from "./CvFields/PersonalData";
 import ProfessionalData from "./CvFields/ProfessionalData";
 import EducationData from "./CvFields/EducationData";
+import "./Cvcreator.scss";
 
 class Cvcreator extends Component {
   constructor() {
@@ -10,10 +11,10 @@ class Cvcreator extends Component {
   }
   render() {
     return (
-      <div>
-        <PersonalData></PersonalData>
-        <ProfessionalData></ProfessionalData>
-        <EducationData></EducationData>
+      <div className="cvCreator">
+        <PersonalData className="PersonalData"></PersonalData>
+        <ProfessionalData className="professionalData"></ProfessionalData>
+        <EducationData className="educationData"></EducationData>
       </div>
     );
   }

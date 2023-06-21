@@ -1,5 +1,6 @@
 import { Component } from "react";
 import uniqid from "uniqid";
+import "./EducationData.scss";
 
 class EducationData extends Component {
   constructor() {
@@ -76,7 +77,7 @@ class EducationData extends Component {
     const values = this.state.institution;
     if (this.state.ready === false) {
       return (
-        <div>
+        <div className="eduDataForm">
           <form onSubmit={this.onSubmit}>
             <h2>Education:</h2>
             <label htmlFor="level">Grade Achieved:</label>
@@ -121,16 +122,18 @@ class EducationData extends Component {
               onChange={this.onChange}
               name="title"
             ></input>
-            <button type="submit">Add Education</button>
-            <button
-              onClick={() => {
-                this.changeFalse();
-              }}
-            >
-              Finish Education info.
-            </button>
+            <div className="buttons">
+              <button type="submit">Add Education</button>
+              <button
+                onClick={() => {
+                  this.changeFalse();
+                }}
+              >
+                Finish Education info.
+              </button>
+            </div>
           </form>
-          <ul>
+          <ul className="eduList">
             {this.state.institutions.map((education) => {
               return (
                 <li key={education.id}>
@@ -162,7 +165,7 @@ class EducationData extends Component {
           <div>
             <h2>Education:</h2>
           </div>
-          <div>
+          <div className="eduList">
             <ul>
               {this.state.institutions.map((education) => {
                 return (

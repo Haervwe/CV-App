@@ -1,5 +1,7 @@
 import { Component } from "react";
 import uniqid from "uniqid";
+import "./ProfessionalData.scss";
+
 class ProfessionalData extends Component {
   constructor() {
     super();
@@ -70,7 +72,7 @@ class ProfessionalData extends Component {
     const values = this.state.job;
     if (this.state.ready === false) {
       return (
-        <div>
+        <div className="professionalDataForm">
           <form onSubmit={this.onSubmit}>
             <h2>Professional Experience:</h2>
             <label htmlFor="Charge">Charge:</label>
@@ -100,17 +102,18 @@ class ProfessionalData extends Component {
               onChange={this.onChange}
               name="end"
             ></input>
-
-            <button type="submit">Add Proffesional Experience</button>
-            <button
-              onClick={() => {
-                this.changeFalse();
-              }}
-            >
-              Finish Professional info.
-            </button>
+            <div className="buttons">
+              <button type="submit">Add Proffesional Experience</button>
+              <button
+                onClick={() => {
+                  this.changeFalse();
+                }}
+              >
+                Finish Professional info.
+              </button>
+            </div>
           </form>
-          <ul>
+          <ul className="jobList">
             {this.state.jobs.map((job) => {
               return (
                 <li key={job.id}>
@@ -137,7 +140,7 @@ class ProfessionalData extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="jobList">
           <div>
             <h2>Professional Experience:</h2>
           </div>
@@ -158,13 +161,15 @@ class ProfessionalData extends Component {
                 );
               })}
             </ul>
-            <button
-              onClick={() => {
-                this.changeFalse();
-              }}
-            >
-              Modify Professional entries.
-            </button>
+            <div className="buttons">
+              <button
+                onClick={() => {
+                  this.changeFalse();
+                }}
+              >
+                Modify Professional entries.
+              </button>
+            </div>
           </div>
         </div>
       );

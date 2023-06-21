@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./PersonalData.scss";
 
 class PersonalData extends Component {
   constructor() {
@@ -43,7 +44,7 @@ class PersonalData extends Component {
     const values = this.state;
     if (this.state.ready === false) {
       return (
-        <div>
+        <div className="personalDataForm">
           <form onSubmit={this.onSubmit}>
             <h2>Personal Data:</h2>
             <label htmlFor="name">Full Name:</label>
@@ -75,14 +76,16 @@ class PersonalData extends Component {
               onChange={this.onChange}
               name="age"
             ></input>
-            <button type="submit">Add Personal Data</button>
+            <div className="buttons">
+              <button type="submit">Add Personal Data</button>
+            </div>
           </form>
         </div>
       );
     } else {
       return (
         <div>
-          <div>
+          <div className="personalDataFinal">
             <h2>Personal Data:</h2>
             <h3>{values.name}</h3>
             <h4>Phone Number:</h4>
@@ -91,14 +94,16 @@ class PersonalData extends Component {
             <p>{values.mail}</p>
             <h4>Age:</h4>
             <p>{values.age}</p>
+            <div className="buttons">
+              <button
+                onClick={() => {
+                  this.changeFalse();
+                }}
+              >
+                Reset PersonalData
+              </button>
+            </div>
           </div>
-          <button
-            onClick={() => {
-              this.changeFalse();
-            }}
-          >
-            Reset PersonalData
-          </button>
         </div>
       );
     }
